@@ -15,7 +15,8 @@ const ViewClothes = React.createClass ({
       currentBottom: 0,
       currentShoes: 0,
       temperature: '',
-      weatherIcon: ''
+      weatherIcon: '',
+      weatherFilter: true
     }
   },
 
@@ -81,6 +82,36 @@ const ViewClothes = React.createClass ({
       }
     }
 
+    //filtering weather
+
+    if (this.state.weatherFilter == true) {
+      let temp = "";
+      let clothesForWeather = [];
+      if (this.state.temperature < 32) {
+        temp = "very cold",
+        clothesForWeather = ["pants", "jeans", "leggings", "sweatpants", "sweater", "cardigan", "turtle neck", "shirt", "sweatshirt", "jacket", "shoes", "sneakers", "boots"]
+      } else if (this.state.temperature < 59) {
+        temp = "cold";
+        clothesForWeather = ["blouse", "sweater", "cardigan", "turtle neck", "shirt", "sweatshirt", "jacket", "shoes", "sneakers", "boots"]
+      } else if (this.state.temperature < 68) {
+        temp = "comfy";
+        clothesForWeather = ["blouse", "skirt", "sweater", "cardigan", "turtle neck", "shirt", "t-shirt", "sweatshirt", "jacket", "shoes", "sneakers", "boots", "sandals"]
+      } else if (this.state.temperature < 77) {
+        temp = "warm";
+        clothesForWeather = ["blouse", "skirt", "cardigan", "tank-top", "t-shirt", "shoes", "sneakers", "sandals", "flip-flops"]
+      } else if (this.state.temperature > 76) {
+        temp = "hot";
+        clothesForWeather = ["skirt", "shorts", "tank-top", "t-shirt", "shoes", "sneakers", "sandals", "flip-flops"]
+      };
+      data = data.filter(function(item) {
+        if (clothesForWeather.indexOf(item.item_type) >=0) {
+          return true
+        }
+      });
+      console.log("weather filter", data)
+    }
+
+
       //randomizing
 
       function shuffleArray(array) {
@@ -127,9 +158,9 @@ const ViewClothes = React.createClass ({
         temperature: temp,
         weatherIcon: icon
       })
+      //calling db
+      ajaxHelpers.retrieveClothes(savingClothesData);
     }.bind(this);
-    //calling db
-    ajaxHelpers.retrieveClothes(savingClothesData);
     //calling Weather
     ajaxHelpers.retrieveWeather(savingWeatherData);
   },
@@ -198,10 +229,11 @@ const ViewClothes = React.createClass ({
     return (
       <div>
         <br></br>
-
         <div style={bodyStyle}>
-          <div>{this.state.temperature}</div>
-          <img src={this.state.weatherIcon}></img>
+          <div style={weatherStyle}>
+            <div>{this.state.temperature}</div>
+            <img src={this.state.weatherIcon}></img>
+          </div>
           <div style={layerStyle}>
             <button onClick={ () => this.pickTopBack() }>Back</button>
             <img style={topStyle} src={this.state.top[this.state.currentTop]}></img>
@@ -284,6 +316,13 @@ const ViewClothes = React.createClass ({
     width: 300,
     display: "flex",
     justifyContent: "space-between",
+    alignItems: "center"
+  }
+
+  let weatherStyle = {
+    height: 60,
+    display: "flex",
+    flexDirection: "column",
     alignItems: "center"
   }
 
