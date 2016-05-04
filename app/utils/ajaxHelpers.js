@@ -76,6 +76,19 @@ module.exports = {
     });
   },
 
+  updateLastWorn: function(itemsPicked) {
+    console.log("wearItToday clicked");
+    itemsPicked.forEach(function(item) {
+      axios.put(this.baseUrl + '/items/' + item.id + ".json?last_worn=" + new Date())
+      .then(function(response) {
+        console.log("response:", response.data);
+      })
+      .catch(function (response) {
+        console.log("there was an error", response);
+      })
+    }.bind(this))
+  },
+
   retrieveClothes: function(savingClothesData) {
     axios.get(this.baseUrl + '/items.json')
     .then(function(response) {
@@ -85,5 +98,23 @@ module.exports = {
     .catch(function( response) {
       console.log("There was an error", response);
     });
+  },
+
+  retrieveWeather: function() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.log(position.coords.latitude, position.coords.longitude);
+      axios.get("http://api.wunderground.com/api/2ca7a149aeb12ed7/geolookup/q/" + position.coords.latitude + "," + position.coords.longitude + ".json")
+      .then(function(response) {
+        console.log(response.data.location.state);
+        console.log(response.data.location.city);
+        axios.get("http://api.wunderground.com/api/2ca7a149aeb12ed7/conditions/q/" + response.data.location.state + "/" + response.data.location.city +".json")
+        .then(function(response) {
+          console.log(response.data.current_observation.feelslike_f)
+          console.log(response.data.current_observation.icon_url)
+        })
+      })
+
+    });
+
   }
 }

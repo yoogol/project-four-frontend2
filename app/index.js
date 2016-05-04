@@ -33,8 +33,7 @@ ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={ViewClothes}/>
-        <Route path='/ViewClothes/:colors' component={ViewClothes}/>
-        <Route path='/ViewClothes/:types' component={ViewClothes}/>
+        <Route path='/ViewClothes/:filter' component={ViewClothes}/>
       <Route path="/addnew" component={AddNewForm} />
       <Route path="/about" component={AboutApp} />
       <Route path="/profile" component={ProfileInfo}/>

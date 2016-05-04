@@ -23,31 +23,68 @@ const ViewClothes = React.createClass ({
   },
 
   componentDidMount: function() {
-    console.log("ATTN", this.props.params.colors);
-    var colors = this.props.params.colors;
-    var types = this.props.params.types;
-
     console.log("Backend clothes data is called");
     var savingClothesData = function(data) {
 
-      if (colors) {
+
+    // FILTERS //
+
+    if (this.props.params.filter) {
+      console.log("ATTN", this.props.params.filter);
+      var clothesFilter = this.props.params.filter;
+      var clothesFilter = clothesFilter.split(',')
+      // filtering colors
+      if (clothesFilter[0] == "colors" && clothesFilter.length > 1) {
         console.log("RUNNING THIS");
         data = data.filter(function(item) {
-          if (colors.indexOf(item.item_color) >=0) {
+          if (clothesFilter.indexOf(item.item_color) >= 0 ) {
             return true
           }
         });
+        console.log("color filter", data)
+      }
+      // filtering types
+      if (clothesFilter[0] == "types" && clothesFilter.length > 1) {
+        console.log("RUNNING THIS");
+        data = data.filter(function(item) {
+          if (clothesFilter.indexOf(item.item_type) >=0) {
+            return true
+          }
+        });
+        console.log("type filter", data)
       }
 
-      if (types) {
+      // filtering times
+      if (clothesFilter[0] == "time" && clothesFilter.length > 1) {
         console.log("RUNNING THIS");
+        let today = new Date();
+        let worn_before = today;
+        if (clothesFilter[1] == "over1month") {
+          worn_before = today.setMonth(today.getMonth() - 1);
+        } else if (clothesFilter[1] == "over3weeks") {
+          worn_before = today.setDate(today.getDate() - (7 * 3));
+        } else if (clothesFilter[1] == "over2weeks") {
+          worn_before = today.setDate(today.getDate() - (7 * 2));
+        } else if (clothesFilter[1] == "over1week") {
+          worn_before = today.setDate(today.getDate() - 7);
+        } else if (clothesFilter[1] == "over3days") {
+          worn_before = today.setDate(today.getDate() - 3);
+        } else if (clothesFilter[1] == "not-yesterday") {
+          worn_before = today.setDate(today.getDate() - 1);
+        };
+
         data = data.filter(function(item) {
-          if (types.indexOf(item.item_type) >=0) {
+          console.log(worn_before);
+          if (item.last_worn < worn_before) {
             return true
           }
         });
+
+        console.log("time filter", data)
       }
-      //randomize array here!
+    }
+
+      //randomizing
 
       function shuffleArray(array) {
         for (var i = array.length - 1; i > 0; i--) {
@@ -63,6 +100,8 @@ const ViewClothes = React.createClass ({
       this.setState ({
         data: data
       });
+
+      // storing in the state
       data.forEach(function(item) {
         if (item.item_category == "bottom") {
           let bottomArray = this.state.bottom;
@@ -86,7 +125,10 @@ const ViewClothes = React.createClass ({
       }.bind(this));
     }.bind(this);
 
+    //calling db
     ajaxHelpers.retrieveClothes(savingClothesData);
+    //calling Weather
+    ajaxHelpers.retrieveWeather();
   },
 
   pickTopNext: function() {
@@ -140,6 +182,14 @@ const ViewClothes = React.createClass ({
     }
   },
 
+  wearItToday: function() {
+    let itemsPicked = this.state.data.filter(function(item) {
+      if (item.image == this.state.top[this.state.currentTop] || item.image == this.state.bottom[this.state.currentBottom] || item.image == this.state.shoes[this.state.currentShoes]) {
+        return true
+      }
+    }.bind(this));
+    ajaxHelpers.updateLastWorn(itemsPicked);
+  },
 
   render: function() {
     return (
@@ -163,7 +213,7 @@ const ViewClothes = React.createClass ({
             <img style={shoesStyle} src={this.state.shoes[this.state.currentShoes]}></img>
             <button onClick={ () => this.pickShoesNext() }>Next</button>
           </div>
-          <button>Wear it today</button>
+          <button onClick={this.wearItToday}>Wear it today</button>
         </div>
       </div>
 

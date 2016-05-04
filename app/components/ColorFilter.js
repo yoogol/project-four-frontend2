@@ -7,15 +7,15 @@ import { Router, Route, Link, browserHistory, IndexRoute, withRouter } from 'rea
 const ColorFilter = React.createClass ({
   getInitialState: function() {
     return {
-      colors: []
+      filter: ["colors"]
     }
   },
   handleSelection: function(e) {
     console.log(e.target.value);
-    var colorArray = this.state.colors;
+    var colorArray = this.state.filter;
     colorArray.push(e.target.value);
     this.setState ({
-      colors: colorArray
+      filter: colorArray
     })
   },
   render: function() {
@@ -40,7 +40,7 @@ const ColorFilter = React.createClass ({
         <hr></hr>
         <input type="checkbox" value="black" onChange={this.handleSelection}/>black
         <hr></hr>
-        <Link to={'/viewclothes/' + this.state.colors}><button>Done</button></Link>
+        <Link to={'/viewclothes/' + this.state.filter}><button>Done</button></Link>
       </div>
     )
   }
