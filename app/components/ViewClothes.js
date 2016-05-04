@@ -14,12 +14,9 @@ const ViewClothes = React.createClass ({
       currentTop: 0,
       currentBottom: 0,
       currentShoes: 0,
+      temperature: '',
+      weatherIcon: ''
     }
-  },
-
-  getWeather: function() {
-    console.log("Weather api is called");
-    return (<div>Rain 45 F</div>)
   },
 
   componentDidMount: function() {
@@ -125,10 +122,16 @@ const ViewClothes = React.createClass ({
       }.bind(this));
     }.bind(this);
 
+    var savingWeatherData = function(temp, icon) {
+      this.setState ({
+        temperature: temp,
+        weatherIcon: icon
+      })
+    }.bind(this);
     //calling db
     ajaxHelpers.retrieveClothes(savingClothesData);
     //calling Weather
-    ajaxHelpers.retrieveWeather();
+    ajaxHelpers.retrieveWeather(savingWeatherData);
   },
 
   pickTopNext: function() {
@@ -197,7 +200,8 @@ const ViewClothes = React.createClass ({
         <br></br>
 
         <div style={bodyStyle}>
-          <div>{this.getWeather()}</div>
+          <div>{this.state.temperature}</div>
+          <img src={this.state.weatherIcon}></img>
           <div style={layerStyle}>
             <button onClick={ () => this.pickTopBack() }>Back</button>
             <img style={topStyle} src={this.state.top[this.state.currentTop]}></img>

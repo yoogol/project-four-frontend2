@@ -100,7 +100,7 @@ module.exports = {
     });
   },
 
-  retrieveWeather: function() {
+  retrieveWeather: function(savingWeatherData) {
     navigator.geolocation.getCurrentPosition(function(position) {
       console.log(position.coords.latitude, position.coords.longitude);
       axios.get("http://api.wunderground.com/api/2ca7a149aeb12ed7/geolookup/q/" + position.coords.latitude + "," + position.coords.longitude + ".json")
@@ -109,8 +109,9 @@ module.exports = {
         console.log(response.data.location.city);
         axios.get("http://api.wunderground.com/api/2ca7a149aeb12ed7/conditions/q/" + response.data.location.state + "/" + response.data.location.city +".json")
         .then(function(response) {
-          console.log(response.data.current_observation.feelslike_f)
-          console.log(response.data.current_observation.icon_url)
+          console.log(response.data.current_observation.feelslike_f);
+          console.log(response.data.current_observation.icon_url);
+          savingWeatherData(response.data.current_observation.feelslike_f, response.data.current_observation.icon_url)
         })
       })
 
