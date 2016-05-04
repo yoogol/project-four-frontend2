@@ -1,7 +1,8 @@
 var axios = require('axios');
 
 module.exports = {
-  baseUrl: 'http://localhost:3000',
+  // baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://purpleboom-backend.herokuapp.com',
 
   addNew: function(image, type, color, callbackAfterSubmit) {
     const uid = localStorage.uid;
