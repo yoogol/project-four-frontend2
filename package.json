@@ -5,18 +5,19 @@
   "main": "index.js",
   "scripts": {
     "production": "webpack -p",
-    "start": "webpack-dev-server --progress --inline --hot"
+    "start-dev": "webpack-dev-server --progress --inline --hot",
+    "start": "node app.js"
   },
   "author": "yoogol",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.9.1",
+    "express": "^4.13.4",
     "lodash": "^4.8.2",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
     "react-dropzone": "^2.2.4",
-    "react-router": "^2.0.1",
-    "react-dropzone": "^2.2.4" 
+    "react-router": "^2.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.7.4",
