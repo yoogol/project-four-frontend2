@@ -31,11 +31,11 @@ function requireAuth(nextState, replace) {
 
 ReactDOM.render((
   <Router history={browserHistory}>
+    <Route path="/signin" component={Login}/>
+    <Route path="/signup" component={Signup}/>
     <Route path="/" component={App}>
       <IndexRoute component={ViewClothes} onEnter={requireAuth}/>
         <Route path='/ViewClothes/:filter' component={ViewClothes}/>
-      <Route path="/signin" component={Login}/>
-      <Route path="/signup" component={Signup}/>
       <Route path="/addnew" component={AddNewForm} />
       <Route path="/about" component={AboutApp} />
       <Route path="/viewclothes" component={ViewClothes}/>

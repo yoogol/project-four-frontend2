@@ -1,40 +1,117 @@
 * {
   box-sizing: border-box;
-  outline: none;
   font-family: 'PT Sans', sans-serif;
 }
 
 body, html {
+  overflow: hidden;
   margin: 0;
   padding: 0;
+  background: #BCE2EB;
+  background-image: url('../assets/wallpaper-2.jpg')
 }
 
 Link {
   text-decoration: none;
   color: white
 }
+
 .app {
-  position: relative;
-  top: 10px;
-  width: 700px;
-  height: 600px;
+  width: 500px;
+  height: 595px;
   margin: auto;
-  background: white
+  background: white;
+  position: relative;
+  top: 20px
+}
+
+.login {
+  width: 500px;
+  height: 570px;
+  margin: auto;
+  background: white;
+  top: -20px
+}
+
+/*sign up/in page*/
+.titleMain {
+  font-family: 'Sigmar One', cursive;
+  font-size: 40px;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  position: relative;
+  top: 100px
+}
+
+.jumbotrone {
+  background: #660066;
+  text-align: center;
+  height: 130px;
+  color: white;
+  font-size: 14px;
+  position: relative;
+  top: 100px
+}
+
+.jumbotronIconCont {
+  width: 500px;
+  margin: auto;
+  position: relative;
+  top: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.jumbotroneIcon {
+  height: 70px;
+  position: relative;
+  top: -8px;
+  left: 0px;
+}
+
+
+.jumbotroneText {
+  position: relative;
+  top: 100px
+}
+
+.loginform {
+  position: relative;
+  top: 130px;
+  text-align: center;
+}
+
+.loginfield {
+  background: lightgrey;
+  width: 200px;
+  border: none;
+  box-shadow: 2px 2px grey;
+  padding: 2px;
+  text-align: center;
+}
+
+.signUpLink {
+  text-decoration: underline;
+  color: black
 }
 
 .header {
   display: flex;
   justify-content: space-around;
-  height: 50px;
+  height: 60px;
   background: #660066;
   color: white
 }
 
+
 .title {
   font-family: 'Sigmar One', cursive;
-  font-size: 30px;
+  font-size: 35px;
   text-decoration: none;
   color: white;
+  position: relative;
+  top: 5px
 }
 
 hr {
@@ -44,7 +121,7 @@ hr {
 
 .menuIcon {
   position: relative;
-  top: 12px;
+  top: 15px;
   left: -40px
 }
 
@@ -57,7 +134,7 @@ hr {
 
 .addIcon {
   position: relative;
-  top: -10px;
+  top: -7px;
   right: -36px;
   font-size: 50px
 }
@@ -177,8 +254,8 @@ hr {
 
 .wearItButton {
   position: absolute;
-  bottom: 105px;
-  left: 300px;
+  bottom: 80px;
+  left: 210px;
 }
 
 .addIconImage {
