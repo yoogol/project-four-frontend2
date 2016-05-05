@@ -26,18 +26,20 @@ const Settings = React.createClass ({
   },
   render: function() {
     return (
-      <div className="filterMenu">
+      <div className="settingsMenu">
         <hr className="menuLine"/>
-        <Link className="linkLightBG" to={'/myhistory/'}>My Outfit History</Link>
+        <Link className="settingsMenu linkLightBG" to={'/myhistory/'}>My Outfit History</Link>
         <hr className="menuLine"/>
         <Link className="linkLightBG" to={'/profile/'}>My Profile</Link>
         <hr className="menuLine"/>
-        <input type="checkbox" checked={this.state.weatherToggle} onChange={this.handleWeatherFilter} />Weather Filter
+        <p>Weather Filter</p>
+          <input type="checkbox" checked={this.state.weatherToggle} onChange={this.handleWeatherFilter} />
         <hr className="menuLine"/>
         <Link className="linkLightBG" to={'/about/'}>About This App</Link>
         <hr className="menuLine"/>
         <Link className="linkLightBG" to={'/logout/'}></Link>
-        <Link className="allSetButton" to={'/viewclothes/' + this.state.weatherToggle}><Button active>All Set!</Button></Link>
+
+        <Link className="allSetButton" to={'/viewclothes/' + this.state.weatherToggle}><button className="purpleButton" onClick={this.wearItToday}>All Set!</button></Link>
       </div>
     )
   }

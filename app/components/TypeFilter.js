@@ -38,6 +38,7 @@ const TypeFilter = React.createClass ({
         smoothScrolling={true}
         className="scrollarea">
       <div className="filterMenu">
+        <p className="menuTitle">select clothes types</p>
         <div className="category">TOPS</div>
         <hr className="menuLine"/><label>blouse</label>
         <input className="checkLine" type="checkbox" value="blouse" onChange={this.handleSelection}/>
@@ -74,7 +75,7 @@ const TypeFilter = React.createClass ({
 
         <hr className="menuLine"/>
         <label>pants</label>
-        <input className="checkLine" type="checkbox" value="parnts" onChange={this.handleSelection}/>
+        <input className="checkLine" type="checkbox" value="pants" onChange={this.handleSelection}/>
 
         <hr className="menuLine"/>
         <label>jeans</label>
@@ -89,7 +90,7 @@ const TypeFilter = React.createClass ({
         <input className="checkLine" type="checkbox" value="shorts" onChange={this.handleSelection}/>
         <br/>
 
-        <Link className="allSetButton" to={'/viewclothes/' + this.state.filter}><Button  onClick={this.wearItToday} active>All Set!</Button></Link>
+        <Link className="allSetButton" to={'/viewclothes/' + this.state.filter}><button className="purpleButton"  onClick={this.wearItToday}>All Set!</button></Link>
       </div>
       </ScrollArea>
     )

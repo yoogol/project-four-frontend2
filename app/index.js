@@ -15,6 +15,7 @@ import NoMatch from './components/NoMatch';
 import TypeFilter from './components/TypeFilter';
 import ColorFilter from './components/ColorFilter';
 import TimeFilter from './components/TimeFilter';
+import MyHistory from './components/MyHistory';
 
 function requireAuth(nextState, replace) {
   // if (!auth.loggedIn()) {
@@ -40,10 +41,12 @@ ReactDOM.render((
       <Route path="/about" component={AboutApp} />
       <Route path="/viewclothes" component={ViewClothes}/>
       <Route path="/profile" component={ProfileInfo}/>
+      <Route path="/myhistory" component={MyHistory}/>
       <Route path="/settings" component={Settings} />
       <Route path="/type-filter" component={TypeFilter} />
       <Route path="/color-filter" component={ColorFilter} />
       <Route path="/time-filter" component={TimeFilter} />
+
     </Route>
   </Router>
 ),document.getElementById('app'));

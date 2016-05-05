@@ -28,7 +28,7 @@ const ColorFilter = React.createClass ({
         smoothScrolling={true}
         className="scrollarea">
       <div className="filterMenu">
-        <hr className="menuLine"/>
+        <p className="menuTitle">select colors</p>
         <label className="red">red</label>
         <input className="checkLine" type="checkbox" value="red" onChange={this.handleSelection} />
 
@@ -68,7 +68,7 @@ const ColorFilter = React.createClass ({
         <br/>
 
 
-        <Link className="allSetButton" to={'/viewclothes/' + this.state.filter}><Button  onClick={this.wearItToday} active>All Set!</Button></Link>
+        <Link className="allSetButton" to={'/viewclothes/' + this.state.filter}><button className="purpleButton" onClick={this.wearItToday}>All Set!</button></Link>
 
       </div>
       </ScrollArea>

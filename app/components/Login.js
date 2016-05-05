@@ -57,7 +57,7 @@ const Login = React.createClass ({
 
           <p className="jumbotroneText">Your wardrobe. Awesome. Any weather</p></div>
         <div className="loginform">
-          <div>Login</div>
+          <div>Log In</div>
           <br/>
           <div>
             <input className="loginfield" placeholder='email' label="email" type='email' name='email' onChange={ e => this.setState({email: e.target.value}) }/>
@@ -66,7 +66,7 @@ const Login = React.createClass ({
             <br/><br/>
 
             <Link to={'/viewclothes'}>
-            <Button active>Enter</Button></Link>
+            <Button>Enter</Button></Link>
             <br/><br/><br/><br/>
             <Link className="signUpLink" to={'/signup'}>Sign Up</Link>
 

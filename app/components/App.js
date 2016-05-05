@@ -18,7 +18,7 @@ const App = React.createClass ({
       <div className="app">
         <div className="header">
           <div className="menuIcon"><Link className="linkDarkBG" to={'/settings'}><img className="menuIconImage" src={menuIcon}/></Link></div>
-          <div><Link className="linkDarkBG" to={'/'}><span className="title linkDarkBG">PB</span></Link></div>
+          <div><Link className="linkDarkBG" to={'/viewclothes'}><span className="title linkDarkBG">P</span><span className="title-small">urple</span><span className="title linkDarkBG">B</span><span className="title-small">oom</span></Link></div>
           <div className="addIcon"><Link className="linkDarkBG" to={'/addnew'}><img className="addIconImage" src={addIcon}/></Link></div>
         </div>
 

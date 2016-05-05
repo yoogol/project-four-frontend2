@@ -28,6 +28,7 @@ const TimeFilter = React.createClass ({
         smoothScrolling={true}
         className="scrollarea">
       <div className="filterMenu">
+        <p className="menuTitle">select time passed since last worn</p>
         <hr className="menuLine"/>
         <input className="checkLine" type="checkbox" value="over1month" onChange={this.handleSelection}/>
         <label>Over a month</label>
@@ -48,7 +49,7 @@ const TimeFilter = React.createClass ({
         <label>Not yesterday</label>
         <br/>
 
-        <Link className="allSetButton" to={'/viewclothes/' + this.state.filter}><Button active>All Set!</Button></Link>
+        <Link className="allSetButton" to={'/viewclothes/' + this.state.filter}><button className="purpleButton">All Set!</button></Link>
       </div>
       </ScrollArea>
     )

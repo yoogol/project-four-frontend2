@@ -5,13 +5,17 @@ import ReactDOM from 'react-dom';
 import { Router, Route, Link, browserHistory, IndexRoute, withRouter } from 'react-router';
 var Dropzone = require('react-dropzone');
 require('../style/Styles.css');
+var DropdownButton = require('react-bootstrap').DropdownButton;
+var MenuItem = require('react-bootstrap').MenuItem;
+
 
 const AddNewForm = React.createClass ({
   getInitialState: function() {
     return {
+      category: 'select',
       image: '',
-      type: '',
-      color: '',
+      type: 'select',
+      color: 'select',
       files: '',
       data_uri: null
     }
@@ -47,9 +51,14 @@ const AddNewForm = React.createClass ({
         if (location.state && location.state.nextPathname) {
           this.props.history.push(location.state.nextPathname);
         } else {
-          this.props.history.push('/')
+          this.props.history.push('/viewclothes')
         }
       }
+      this.setState ({
+        category: "",
+        type: "",
+        color: ""
+      })
     }.bind(this);
 //I LEFT IT HERE - add logic for ajaxcall
   // let newClothesToAdd = {
@@ -59,7 +68,83 @@ const AddNewForm = React.createClass ({
   // }
   ajaxHelpers.addNew(this.state.image, this.state.type, this.state.color, callbackAfterSubmit)
   },
+  handleCategory: function(e) {
+    console.log(e.target.value);
+    this.setState ({
+      category: e.target.value
+    })
+  },
+  handleType: function(e) {
+    console.log(e.target.value);
+    this.setState ({
+      type: e.target.value
+    })
+  },
 
+  handleColor: function(e) {
+    console.log(e.target.value);
+    this.setState ({
+      color: e.target.value
+    })
+  },
+  displayTypeDropdown: function() {
+    console.log("RERENDERING")
+    if (this.state.category == "top") {
+      return (
+      <select className="dropdown"
+        title="Item Type"
+        onChange={this.handleType} value={this.state.type}
+        >
+        <option selected>Type</option>
+        <option value={"blouse"}>blouse</option>
+        <option value={"sweater"}>sweater</option>
+        <option value={"cardigan"}>cardigan</option>
+        <option value={"turtle neck"}>turtle neck</option>
+        <option value={"tank top"}>tank top</option>
+        <option value={"shirt"}>shirt</option>
+        <option value={"t-shirt"}>t-shirt</option>
+        <option value={"sweatshirt"}>sweatshirt</option>
+        <option value={"jacket"}>jacket</option>
+      </select>
+    )
+    } else if (this.state.category == "bottom") {
+      return (
+        <select className="dropdown"
+          title="Item Type"
+          onChange={this.handleType} value={this.state.type}
+          >
+          <option selected>Type</option>
+          <option value={"skirt"}>skirt</option>
+          <option value={"pants"}>pants</option>
+          <option value={"jeans"}>jeans</option>
+          <option value={"sweatpants"}>sweatpants</option>
+          <option value={"shorts"}>shorts</option>
+        </select>
+      )
+    } else if (this.state.category == "shoes") {
+      return (
+        <select className="dropdown"
+          title="Item Type"
+          onChange={this.handleType} value={this.state.type}
+          >
+          <option selected>Type</option>
+          <option value={"skirt"}>skirt</option>
+          <option value={"pants"}>pants</option>
+          <option value={"jeans"}>jeans</option>
+          <option value={"sweatpants"}>sweatpants</option>
+          <option eventKey={"shorts"}>shorts</option>
+        </select>
+      )
+    }
+  },
+
+  displayImage: function() {
+    if (this.state.image) {
+      return(
+        <img className="previewImage" src={this.state.image}/>
+      )
+    }
+  },
   render: function() {
     return (
       <div>
@@ -71,12 +156,33 @@ const AddNewForm = React.createClass ({
               <button type="button" onClick={this.onOpenClick}>
                   Open Dropzone
               </button>
-            </div>*/}
-            <img className="imagePreview" src={this.state.files.preview} />
+            </div>
+            <img className="previewImage" src={this.state.files.preview} />
+            */}
+
+
             <input placeholder='Image link' name='image' onChange={ e => this.setState({image:e.target.value})} />
-            <input placeholder='Select Type' name='type' onChange={ e => this.setState({type: e.target.value})}/>
-            <input placeholder='Select Color' name='color' onChange={e => this.setState({color: e.target.value})}/>
-            <button onClick={ () => this.handleAdd() }>Submit</button>
+            {this.displayImage()}
+            <select className="dropdown"
+              onChange={this.handleCategory} value={this.state.category}
+              >Category
+              <option value={"category"} selected>Category</option>
+              <option value={"top"}>top</option>
+              <option value={"bottom"}>bottom</option>
+              <option value={"shoes"}>shoes</option>
+            </select>
+            {this.displayTypeDropdown()}
+            <select className="dropdown"
+              onChange={this.handleColor} value={this.state.color}
+              >Color
+              <option selected>Color</option>
+              <option value={"red"} selected>red</option>
+              <option value={"blue"}>blue</option>
+              <option value={"yellow"}>yellow</option>
+              <option value={"purple"}>purple</option>
+            </select>
+
+            <button className="purpleButton" onClick={ () => this.handleAdd() }>Save</button>
           </div>
         </div>
 

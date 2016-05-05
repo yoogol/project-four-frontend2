@@ -115,13 +115,13 @@ const ViewClothes = React.createClass ({
         clothesForWeather = ["pants", "jeans", "leggings", "sweatpants", "sweater", "cardigan", "turtle neck", "shirt", "sweatshirt", "jacket", "shoes", "sneakers", "boots"]
       } else if (this.state.temperature < 59) {
         temp = "cold";
-        clothesForWeather = ["blouse", "sweater", "cardigan", "turtle neck", "shirt", "sweatshirt", "jacket", "shoes", "sneakers", "boots"]
+        clothesForWeather = ["pants", "blouse", "sweater", "cardigan", "turtle neck", "shirt", "sweatshirt", "jacket", "shoes", "sneakers", "boots"]
       } else if (this.state.temperature < 68) {
         temp = "comfy";
-        clothesForWeather = ["blouse", "skirt", "sweater", "cardigan", "turtle neck", "shirt", "t-shirt", "sweatshirt", "jacket", "shoes", "sneakers", "boots", "sandals"]
+        clothesForWeather = ["pants", "blouse", "skirt", "sweater", "cardigan", "turtle neck", "shirt", "t-shirt", "sweatshirt", "jacket", "shoes", "sneakers", "boots", "sandals"]
       } else if (this.state.temperature < 77) {
         temp = "warm";
-        clothesForWeather = ["blouse", "skirt", "cardigan", "tank-top", "t-shirt", "shoes", "sneakers", "sandals", "flip-flops"]
+        clothesForWeather = ["pants", "blouse", "skirt", "cardigan", "tank-top", "t-shirt", "shoes", "sneakers", "sandals", "flip-flops"]
       } else if (this.state.temperature > 76) {
         temp = "hot";
         clothesForWeather = ["skirt", "shorts", "tank-top", "t-shirt", "shoes", "sneakers", "sandals", "flip-flops"]
@@ -258,7 +258,7 @@ const ViewClothes = React.createClass ({
       return (
         <div className="weather">
           <img className="weatherIcon" src={this.state.weatherIcon}></img>
-          <div className="weatherTemp">{this.state.temperature} F</div>
+          <div className="weatherTemp"><p>{this.state.temperature} F</p></div>
         </div>
       )} else if (this.state.weatherFilter == true && this.state.weatherReady == false) {
         return (
@@ -278,7 +278,7 @@ const ViewClothes = React.createClass ({
       <div>
         <br></br>
         {this.displayWeather()}
-        <div>
+        <div className="container">
           <div className="threeLayers">
             <img className="arrowImage" src={arrowLeft} onClick={ () => this.pickTopBack() }/>
             <img className="topPic" src={this.state.top[this.state.currentTop]}></img>
@@ -294,9 +294,9 @@ const ViewClothes = React.createClass ({
             <img className="shoesPic" src={this.state.shoes[this.state.currentShoes]}></img>
             <img className="arrowImage" src={arrowRight} onClick={ () => this.pickShoesNext() }/>
           </div>
-
+          <button className="purpleButton" onClick={this.wearItToday}>Wear it today</button>
         </div>
-        <Button className="wearItButton" onClick={this.wearItToday} bsSize="small" active>Wear it today</Button>
+
       </div>
 
       )}
