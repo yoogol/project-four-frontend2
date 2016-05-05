@@ -8,16 +8,18 @@ var purpleBackground = require("../assets/purple-background.jpg");
 var typeIcon = require("../assets/white-dress.png");
 var colorIcon = require("../assets/color-flower.png");
 var timeIcon = require("../assets/hourglass.png");
-
+var wallpaper = require("../assets/wallpaper.jpg")
+var addIcon = require("../assets/add-button-white.png");
+var menuIcon = require("../assets/menu_white.png")
 
 const App = React.createClass ({
   render: function() {
     return (
       <div className="app">
         <div className="header">
-          <div className="menuIcon"><Link className="linkDarkBG" to={'/settings'}><hr/><hr/><hr/></Link></div>
-          <div><Link className="linkDarkBG title" to={'/'}>PB</Link></div>
-          <div className="addIcon"><Link className="linkDarkBG" to={'/addnew'}>+</Link></div>
+          <div className="menuIcon"><Link className="linkDarkBG" to={'/settings'}><img className="menuIconImage" src={menuIcon}/></Link></div>
+          <div><Link className="linkDarkBG" to={'/'}><span className="title linkDarkBG">PB</span></Link></div>
+          <div className="addIcon"><Link className="linkDarkBG" to={'/addnew'}><img className="addIconImage" src={addIcon}/></Link></div>
         </div>
 
         <div className="appbody">

@@ -4,6 +4,8 @@ import ajaxHelpers from '../utils/ajaxHelpers';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, browserHistory, IndexRoute, withRouter } from 'react-router';
 require('../style/Styles.css');
+var ScrollArea = require('react-scrollbar');
+var Button = require('react-bootstrap').Button;
 
 const TimeFilter = React.createClass ({
   getInitialState: function() {
@@ -21,22 +23,34 @@ const TimeFilter = React.createClass ({
   },
   render: function() {
     return (
+      <ScrollArea
+        speed={0.5}
+        smoothScrolling={true}
+        className="scrollarea">
       <div className="filterMenu">
-        <hr></hr>
-        <input type="checkbox" value="over1month" onChange={this.handleSelection}/>Over a month
-        <hr></hr>
-        <input type="checkbox" value="over3weeks" onChange={this.handleSelection}/>Over 3 weeks
-        <hr></hr>
-        <input type="checkbox" value="over2weeks" onChange={this.handleSelection}/>Over 2 weeks
-        <hr></hr>
-        <input type="checkbox" value="over1week" onChange={this.handleSelection}/>Over 1 week
-        <hr></hr>
-        <input type="checkbox" value="over3days" onChange={this.handleSelection}/>Over 3 days
-        <hr></hr>
-        <input type="checkbox" value="not-yesterday" onChange={this.handleSelection}/>Not yesterday
-        <hr></hr>
-        <Link to={'/viewclothes/' + this.state.filter}><button>Done</button></Link>
+        <hr className="menuLine"/>
+        <input className="checkLine" type="checkbox" value="over1month" onChange={this.handleSelection}/>
+        <label>Over a month</label>
+        <hr className="menuLine"/>
+        <input className="checkLine" type="checkbox" value="over3weeks" onChange={this.handleSelection}/>
+        <label>Over 3 weeks</label>
+        <hr className="menuLine"/>
+        <input className="checkLine" type="checkbox" value="over2weeks" onChange={this.handleSelection}/>
+        <label>Over 2 weeks</label>
+        <hr className="menuLine"/>
+        <input className="checkLine" type="checkbox" value="over1week" onChange={this.handleSelection}/>
+        <label>Over 1 week</label>
+        <hr className="menuLine"/>
+        <input className="checkLine" type="checkbox" value="over3days" onChange={this.handleSelection}/>
+        <label>Over 3 days</label>
+        <hr className="menuLine"/>
+        <input className="checkLine" type="checkbox" value="not-yesterday" onChange={this.handleSelection}/>
+        <label>Not yesterday</label>
+        <br/>
+
+        <Link className="allSetButton" to={'/viewclothes/' + this.state.filter}><Button active>All Set!</Button></Link>
       </div>
+      </ScrollArea>
     )
   }
 })

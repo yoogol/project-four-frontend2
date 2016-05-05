@@ -16,14 +16,14 @@ import TypeFilter from './components/TypeFilter';
 import ColorFilter from './components/ColorFilter';
 import TimeFilter from './components/TimeFilter';
 
-// function requireAuth(nextState, replace) {
-//   if (!auth.loggedIn()) {
-//     replace({
-//       pathname: '/signin',
-//       state: { nextPathname: nextState.location.pathname }
-//     });
-//   }
-// };
+function requireAuth(nextState, replace) {
+  // if (!auth.loggedIn()) {
+    replace({
+      pathname: '/signin',
+      state: { nextPathname: nextState.location.pathname }
+    });
+  // }
+};
 
       // <IndexRoute component={ViewClothes} onEnter={requireAuth}/>\
       // <Route path="/signin" component={Login}  />
@@ -32,10 +32,13 @@ import TimeFilter from './components/TimeFilter';
 ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={ViewClothes}/>
+      <IndexRoute component={ViewClothes} onEnter={requireAuth}/>
         <Route path='/ViewClothes/:filter' component={ViewClothes}/>
+      <Route path="/signin" component={Login}/>
+      <Route path="/signup" component={Signup}/>
       <Route path="/addnew" component={AddNewForm} />
       <Route path="/about" component={AboutApp} />
+      <Route path="/viewclothes" component={ViewClothes}/>
       <Route path="/profile" component={ProfileInfo}/>
       <Route path="/settings" component={Settings} />
       <Route path="/type-filter" component={TypeFilter} />

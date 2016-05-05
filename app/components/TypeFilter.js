@@ -34,44 +34,62 @@ const TypeFilter = React.createClass ({
   render: function() {
     return (
       <ScrollArea
-        speed={0.5}>
+        speed={0.5}
+        smoothScrolling={true}
+        className="scrollarea">
       <div className="filterMenu">
-        <hr/>
-        <div>TOPS</div>
-        <hr/>
-        <label>blouse</label>
-        <input className="checkLine" className="checkLine" type="checkbox" value="blouse" onChange={this.handleSelection}/>
-        <hr/><label>sweater</label>
+        <div className="category">TOPS</div>
+        <hr className="menuLine"/><label>blouse</label>
+        <input className="checkLine" type="checkbox" value="blouse" onChange={this.handleSelection}/>
+
+        <hr className="menuLine"/><label>sweater</label>
         <input className="checkLine" type="checkbox" value="sweater" onChange={this.handleSelection}/>
-        <hr/><label>cardigan</label>
+
+        <hr className="menuLine"/><label>cardigan</label>
         <input className="checkLine" type="checkbox" value="sweater" onChange={this.handleSelection}/>
-        <hr/><label>turtle neck</label>
+
+        <hr className="menuLine"/><label>turtle neck</label>
         <input className="checkLine" type="checkbox" value="turtle neck" onChange={this.handleSelection}/>
-        <hr/><label>tank top</label>
+
+        <hr className="menuLine"/><label>tank top</label>
         <input className="checkLine" type="checkbox" value="tank top" onChange={this.handleSelection}/>
-        <hr/><label>shirt</label>
+
+        <hr className="menuLine"/><label>shirt</label>
         <input className="checkLine" type="checkbox" value="shirt" onChange={this.handleSelection}/>
-        <hr/><label>t-shirt</label>
+
+        <hr className="menuLine"/><label>t-shirt</label>
         <input className="checkLine" type="checkbox" value="t-shirt" onChange={this.handleSelection}/>
-        <hr/><label>sweatshirt</label>
+
+        <hr className="menuLine"/><label>sweatshirt</label>
         <input className="checkLine" type="checkbox" value="sweatshirt" onChange={this.handleSelection}/>
-        <hr/><label>jacket</label>
+
+        <hr className="menuLine"/><label>jacket</label>
         <input className="checkLine" type="checkbox" value="jacket" onChange={this.handleSelection}/>
-        <hr/>
-        <div>BOTTOMS</div>
-        <hr/>
-        skirt
+
+        <hr className="menuLine"/>
+        <div className="category">BOTTOMS</div>
+        <hr className="menuLine"/>
+        <label>skirt</label>
         <input className="checkLine" type="checkbox" value="skirt" onChange={this.handleSelection}/>
-        <hr/>pants
+
+        <hr className="menuLine"/>
+        <label>pants</label>
         <input className="checkLine" type="checkbox" value="parnts" onChange={this.handleSelection}/>
-        <hr/>jeans
+
+        <hr className="menuLine"/>
+        <label>jeans</label>
         <input className="checkLine" type="checkbox" value="jeans" onChange={this.handleSelection}/>
-        <hr/>sweatpants
+
+        <hr className="menuLine"/>
+        <label>sweatpants</label>
         <input className="checkLine" type="checkbox" value="sweatpants" onChange={this.handleSelection}/>
-        <hr/>shorts
+
+        <hr className="menuLine"/>
+        <label>shorts</label>
         <input className="checkLine" type="checkbox" value="shorts" onChange={this.handleSelection}/>
-        <hr/>
-        <Link to={'/viewclothes/' + this.state.filter}><Button onClick={this.wearItToday} active>Wear it today</Button></Link>
+        <br/>
+
+        <Link className="allSetButton" to={'/viewclothes/' + this.state.filter}><Button  onClick={this.wearItToday} active>All Set!</Button></Link>
       </div>
       </ScrollArea>
     )

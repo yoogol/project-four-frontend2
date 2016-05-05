@@ -16,6 +16,7 @@ const Login = React.createClass ({
   },
 
   handleLogin: function(e){
+
     var callbackAfterLogin = function(success) {
       if (!success) {
         return this.setState({ error: true });
@@ -43,7 +44,8 @@ const Login = React.createClass ({
         <div>
           <input placeholder='email' type='email' name='email' onChange={ e => this.setState({email: e.target.value}) } />
           <input placeholder='password' type='password' name='password' onChange={ e => this.setState({password: e.target.value}) } />
-          <button onClick={ () => this.handleLogin() }>Submit</button>
+          <Link to={'/viewclothes'}>
+          <button>Submit</button></Link>
           <p>{"Don't have an account?"}<Link to={'/signup'}>Sign Up</Link></p>
           <p>{this.state.successMsg}</p>
         </div>
@@ -53,3 +55,6 @@ const Login = React.createClass ({
 })
 
 export default Login;
+
+// this is the fully functional button, currently replaced by link to view clothes
+//onClick={ () => this.handleLogin() }

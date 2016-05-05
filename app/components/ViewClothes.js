@@ -7,6 +7,7 @@ require('../style/Styles.css');
 var arrowRight = require("../assets/arrow-right.png");
 var arrowLeft = require("../assets/arrow-left.png");
 var Button = require('react-bootstrap').Button;
+var smileyFace = require("../assets/smiley-face.png")
 
 
 
@@ -22,10 +23,25 @@ const ViewClothes = React.createClass ({
       currentShoes: 0,
       temperature: '',
       weatherIcon: '',
-      weatherFilter: false
+      weatherFilter: false,
+      weatherReady: false
     }
   },
 
+  componentWillMount: function() {
+    // filtering weather
+    if (this.props.params.filter) {
+      if (this.props.params.filter == "false") {
+        this.setState ({
+          weatherFilter: false
+        })
+      } else if (this.props.params.filter == "true") {
+        this.setState ({
+          weatherFilter: true
+        })
+      }
+    }
+  },
   componentDidMount: function() {
     console.log("Backend clothes data is called");
     var savingClothesData = function(data) {
@@ -37,6 +53,7 @@ const ViewClothes = React.createClass ({
       console.log("ATTN", this.props.params.filter);
       var clothesFilter = this.props.params.filter;
       var clothesFilter = clothesFilter.split(',')
+
       // filtering colors
       if (clothesFilter[0] == "colors" && clothesFilter.length > 1) {
         console.log("RUNNING THIS");
@@ -162,7 +179,8 @@ const ViewClothes = React.createClass ({
     var savingWeatherData = function(temp, icon) {
       this.setState ({
         temperature: temp,
-        weatherIcon: icon
+        weatherIcon: icon,
+        weatherReady: true
       })
       //calling db
       ajaxHelpers.retrieveClothes(savingClothesData);
@@ -173,7 +191,6 @@ const ViewClothes = React.createClass ({
     } else {
       ajaxHelpers.retrieveClothes(savingClothesData);
     }
-
   },
 
   pickTopNext: function() {
@@ -236,16 +253,32 @@ const ViewClothes = React.createClass ({
     ajaxHelpers.updateLastWorn(itemsPicked);
   },
 
+  displayWeather: function() {
+    if (this.state.weatherFilter == true && this.state.weatherReady == true) {
+      return (
+        <div className="weather">
+          <img className="weatherIcon" src={this.state.weatherIcon}></img>
+          <div className="weatherTemp">{this.state.temperature} F</div>
+        </div>
+      )} else if (this.state.weatherFilter == true && this.state.weatherReady == false) {
+        return (
+          <div className="weatherMessage">We are loading your weather forecast</div>
+        )
+      } else {
+        return (
+          <div className="weatherMessage">
+            Weather forecast is turned off
+          </div>
+        )
+      }
+    },
+
   render: function() {
     return (
       <div>
         <br></br>
-        <div className="appbody">
-          <div className="weather">
-            weather
-            <div>{this.state.temperature}</div>
-            <img src={this.state.weatherIcon}></img>
-          </div>
+        {this.displayWeather()}
+        <div>
           <div className="threeLayers">
             <img className="arrowImage" src={arrowLeft} onClick={ () => this.pickTopBack() }/>
             <img className="topPic" src={this.state.top[this.state.currentTop]}></img>
@@ -261,8 +294,9 @@ const ViewClothes = React.createClass ({
             <img className="shoesPic" src={this.state.shoes[this.state.currentShoes]}></img>
             <img className="arrowImage" src={arrowRight} onClick={ () => this.pickShoesNext() }/>
           </div>
-          <Button className="wearItButton" onClick={this.wearItToday} active>Wear it today</Button>
+
         </div>
+        <Button className="wearItButton" onClick={this.wearItToday} bsSize="small" active>Wear it today</Button>
       </div>
 
       )}
