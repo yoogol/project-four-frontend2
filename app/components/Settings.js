@@ -3,36 +3,26 @@ import auth from '../utils/auth';
 import ajaxHelpers from '../utils/ajaxHelpers';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, browserHistory, IndexRoute, withRouter } from 'react-router';
+require('../style/Styles.css');
 
 const Settings = React.createClass ({
   render: function() {
     return (
-      <div style={menuStyle}>
+      <div className="filterMenu">
         <hr></hr>
-        <Link style={linkStyle} to={'/myhistory/'}>My Outfit History</Link>
+        <Link className="linkLightBG" to={'/myhistory/'}>My Outfit History</Link>
         <hr></hr>
-        <Link style={linkStyle} to={'/profile/'}>My Profile</Link>
+        <Link className="linkLightBG" to={'/profile/'}>My Profile</Link>
         <hr></hr>
         <input type="checkbox" onChange={this.handleWeatherFilter} />Weather Filter
         <hr></hr>
-        <Link style={linkStyle} to={'/about/'}>About This App</Link>
+        <Link className="linkLightBG" to={'/about/'}>About This App</Link>
         <hr></hr>
-        <Link style={linkStyle} to={'/logout/'}></Link>
+        <Link className="linkLightBG" to={'/logout/'}></Link>
       </div>
     )
   }
 })
-
-let menuStyle = {
-textAlign: "center",
-fontSize: 15,
-minHeight: 400
-}
-
-let linkStyle = {
-  textDecoration: "none",
-  color: "black"
-}
 
 
 

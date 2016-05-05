@@ -3,88 +3,37 @@ import auth from '../utils/auth';
 import ajaxHelpers from '../utils/ajaxHelpers';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, browserHistory, IndexRoute, withRouter } from 'react-router';
+require('../style/Styles.css');
+var purpleBackground = require("../assets/purple-background.jpg");
+var typeIcon = require("../assets/white-dress.png");
+var colorIcon = require("../assets/color-flower.png");
+var timeIcon = require("../assets/hourglass.png");
+
 
 const App = React.createClass ({
   render: function() {
     return (
-      <div style={appStyle}>
-        <div style={headerStyle}>
-          <div style={elementStyle}><Link style={linkStyle} to={'/settings'}>Menu</Link></div>
-          <div style={elementStyle}><Link style={linkStyle} to={'/'}>PB</Link></div>
-          <div style={elementStyle}><Link style={linkStyle} to={'/addnew'}>Add</Link></div>
+      <div className="app">
+        <div className="header">
+          <div className="menuIcon"><Link className="linkDarkBG" to={'/settings'}><hr/><hr/><hr/></Link></div>
+          <div><Link className="linkDarkBG title" to={'/'}>PB</Link></div>
+          <div className="addIcon"><Link className="linkDarkBG" to={'/addnew'}>+</Link></div>
         </div>
-        {this.props.children}
-        <div style={footerStyle}>
-          <div style={elementStyle}><Link style={linkStyle} to={'/type-filter'}>Type</Link></div>
-          <div style={elementStyle}><Link style={linkStyle} to={'/color-filter'}>Color</Link></div>
-          <div style={elementStyle}><Link style={linkStyle} to={'/time-filter'}>Time</Link></div>
+
+        <div className="appbody">
+          {this.props.children}
+        </div>
+
+        <div className="footer">
+          <div className="typeIcon"><Link className="linkLightBG" to={'/type-filter'}><img src={typeIcon} className="typeIconImage"/></Link></div>
+
+          <div className="typeIcon"><Link className="linkLightBG" to={'/color-filter'}><img src={colorIcon} className="colorIconImage"/></Link></div>
+
+          <div className="typeIcon"><Link className="linkLightBG" to={'/time-filter'}><img src={timeIcon} className="timeIconImage"/></Link></div>
         </div>
       </div>
     )}
 })
-
-let headerStyle = {
-  display: "flex",
-  justifyContent: "space-around",
-  height: 50,
-  background: "indigo",
-  color: "white"
-}
-
-let bodyStyle = {
-  minHeight: 400,
-  padding: "auto",
-  margin: "auto",
-  display: "flex",
-  justifyContent: "space-around",
-  flexDirection: "column",
-  alignItems: "center"
-}
-
-let footerStyle = {
-  display: "flex",
-  justifyContent: "space-around",
-  minHeight: 30,
-  background: "indigo",
-  color: "white"
-}
-
-let linkStyle = {
-  textDecoration: "none",
-  color: "white"
-}
-
-let elementStyle = {
-  paddingTop: "1%"
-}
-
-let appStyle = {
-  width: "70%",
-  margin: "auto"
-}
-
-let topStyle = {
-  height: 100,
-  position: "relative"
-}
-let bottomStyle = {
-  height: 150,
-  position: "relative",
-  bottom: 30
-}
-let shoesStyle = {
-  height: 50,
-  position: "relative"
-}
-
-let layerStyle = {
-  margin: "auto",
-  color: "red",
-  width: 300,
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center"
-}
 
 
 export default App;

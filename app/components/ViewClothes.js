@@ -3,6 +3,12 @@ import auth from '../utils/auth';
 import ajaxHelpers from '../utils/ajaxHelpers';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, browserHistory, IndexRoute, withRouter } from 'react-router';
+require('../style/Styles.css');
+var arrowRight = require("../assets/arrow-right.png");
+var arrowLeft = require("../assets/arrow-left.png");
+var Button = require('react-bootstrap').Button;
+
+
 
 const ViewClothes = React.createClass ({
   getInitialState: function() {
@@ -16,7 +22,7 @@ const ViewClothes = React.createClass ({
       currentShoes: 0,
       temperature: '',
       weatherIcon: '',
-      weatherFilter: true
+      weatherFilter: false
     }
   },
 
@@ -162,7 +168,12 @@ const ViewClothes = React.createClass ({
       ajaxHelpers.retrieveClothes(savingClothesData);
     }.bind(this);
     //calling Weather
-    ajaxHelpers.retrieveWeather(savingWeatherData);
+    if (this.state.weatherFilter == true) {
+      ajaxHelpers.retrieveWeather(savingWeatherData);
+    } else {
+      ajaxHelpers.retrieveClothes(savingClothesData);
+    }
+
   },
 
   pickTopNext: function() {
@@ -229,101 +240,33 @@ const ViewClothes = React.createClass ({
     return (
       <div>
         <br></br>
-        <div style={bodyStyle}>
-          <div style={weatherStyle}>
+        <div className="appbody">
+          <div className="weather">
+            weather
             <div>{this.state.temperature}</div>
             <img src={this.state.weatherIcon}></img>
           </div>
-          <div style={layerStyle}>
-            <button onClick={ () => this.pickTopBack() }>Back</button>
-            <img style={topStyle} src={this.state.top[this.state.currentTop]}></img>
-            <button onClick={ () => this.pickTopNext() }>Next</button>
+          <div className="threeLayers">
+            <img className="arrowImage" src={arrowLeft} onClick={ () => this.pickTopBack() }/>
+            <img className="topPic" src={this.state.top[this.state.currentTop]}></img>
+            <img className="arrowImage" src={arrowRight} onClick={ () => this.pickTopNext() } />
           </div>
-          <div style={layerStyle}>
-            <button onClick={ () => this.pickBottomBack() }>Back</button>
-            <img style={bottomStyle} src={this.state.bottom[this.state.currentBottom]}></img>
-            <button onClick={ () => this.pickBottomNext() }>Next</button>
+          <div className="threeLayers">
+            <img className="arrowImage" src={arrowLeft} onClick={ () => this.pickBottomBack() }/>
+            <img className="bottomPic" src={this.state.bottom[this.state.currentBottom]}></img>
+            <img className="arrowImage" src={arrowRight} onClick={ () => this.pickBottomNext() }/>
           </div>
-          <div style={layerStyle}>
-            <button onClick={ () => this.pickShoesBack() }>Back</button>
-            <img style={shoesStyle} src={this.state.shoes[this.state.currentShoes]}></img>
-            <button onClick={ () => this.pickShoesNext() }>Next</button>
+          <div className="threeLayers">
+            <img className="arrowImage" src={arrowLeft} onClick={ () => this.pickShoesBack() }/>
+            <img className="shoesPic" src={this.state.shoes[this.state.currentShoes]}></img>
+            <img className="arrowImage" src={arrowRight} onClick={ () => this.pickShoesNext() }/>
           </div>
-          <button onClick={this.wearItToday}>Wear it today</button>
+          <Button className="wearItButton" onClick={this.wearItToday} active>Wear it today</Button>
         </div>
       </div>
 
       )}
   })
 
-  let headerStyle = {
-    display: "flex",
-    justifyContent: "space-around",
-    height: 50,
-    background: "indigo",
-    color: "white"
-  }
-
-  let bodyStyle = {
-    minHeight: 400,
-    padding: "auto",
-    margin: "auto",
-    display: "flex",
-    justifyContent: "space-around",
-    flexDirection: "column",
-    alignItems: "center"
-  }
-
-  let footerStyle = {
-    display: "flex",
-    justifyContent: "space-around",
-    minHeight: 30,
-    background: "indigo",
-    color: "white"
-  }
-
-  let linkStyle = {
-    textDecoration: "none",
-    color: "white"
-  }
-
-  let elementStyle = {
-    paddingTop: "1%"
-  }
-
-  let appStyle = {
-    width: "70%",
-    margin: "auto"
-  }
-
-  let topStyle = {
-    height: 100,
-    position: "relative"
-  }
-  let bottomStyle = {
-    height: 150,
-    position: "relative",
-    bottom: 30
-  }
-  let shoesStyle = {
-    height: 50,
-    position: "relative"
-  }
-
-  let layerStyle = {
-    margin: "auto",
-    color: "red",
-    width: 300,
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center"
-  }
-
-  let weatherStyle = {
-    height: 60,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center"
-  }
 
 export default ViewClothes;

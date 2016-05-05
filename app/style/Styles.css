@@ -1,0 +1,182 @@
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+
+}
+
+.app {
+  width: 500px;
+  margin: auto;
+  background: white
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  height: 50px;
+  background: #660066;
+  color: white
+}
+
+.title {
+  font-family: 'Sigmar One', cursive;
+  font-size: 30px
+}
+
+hr {
+  width: 30px;
+  margin: 6px
+}
+
+.menuIcon {
+  position: relative;
+  top: 12px;
+  left: -40px
+}
+
+.addIcon {
+  position: relative;
+  top: -15px;
+  right: -36px;
+  font-size: 50px
+}
+
+.appbody {
+  height: 450px;
+  padding: auto;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center
+}
+
+.threeLayers {
+  margin: auto;
+  color: red;
+  height: 100px;
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  height: 40px;
+  border-top: 3px solid indigo;
+  color: indigo;
+  margin-top: 7px
+}
+
+.linkLightBG {
+  text-decoration: none;
+  color: indigo
+}
+
+.linkLightBG:hover {
+  text-decoration: none;
+  color: white
+}
+
+.linkDarkBG {
+  text-decoration: none;
+  color: white
+}
+
+.linkDarkBG:hover {
+  text-decoration: none;
+  color: white
+}
+
+.topPic {
+  height: 100px;
+  position: relative;
+}
+
+.bottomPic {
+  height: 150px;
+  position: relative
+}
+
+.shoesPic {
+  height: 50px;
+  position: relative
+}
+
+.weather {
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: blue
+}
+
+.imagePreview {
+  width: 300px
+}
+
+.filterMenu {
+  margin-top: 2px;
+  width: 400px;
+  font-size: 15px
+}
+
+.arrowImage {
+  width: 30px
+}
+
+.backgroundImage {
+  z-index: -11
+}
+
+.wearItButton {
+  position: relative;
+  bottom: 20px
+}
+
+.typeIcon {
+  margin-top: 5px;
+  border-radius: 100% 100% 100% 100%;
+  width: 40px;
+  height: 40px;
+  background-color: #660066
+}
+
+.typeIconImage {
+  height: 30px;
+  position: relative;
+  top: 3px;
+  left: 6px;
+}
+
+.colorIconImage {
+  height: 30px;
+  position: relative;
+  top: 4px;
+  left: 4px;
+}
+
+.timeIconImage {
+  height: 30px;
+  position: relative;
+  top: 5px;
+  left: 12px;
+}
+
+label {
+  border-top: 1px solid grey
+
+}
+
+.checkLine {
+  position: relative;
+  left: 100px;
+  text-align: left;
+  font-size: 20px;
+  padding-bottom: 5px
+}

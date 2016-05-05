@@ -3,6 +3,9 @@ import auth from '../utils/auth';
 import ajaxHelpers from '../utils/ajaxHelpers';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, browserHistory, IndexRoute, withRouter } from 'react-router';
+require('../style/Styles.css');
+var ScrollArea = require('react-scrollbar');
+var Button = require('react-bootstrap').Button;
 
 const TypeFilter = React.createClass ({
   getInitialState: function() {
@@ -30,51 +33,49 @@ const TypeFilter = React.createClass ({
   },
   render: function() {
     return (
-      <div style={menuStyle}>
-        <hr></hr>
+      <ScrollArea
+        speed={0.5}>
+      <div className="filterMenu">
+        <hr/>
         <div>TOPS</div>
-        <hr></hr>
-        <input type="checkbox" value="blouse" onChange={this.handleSelection}/>blouse
-        <hr></hr>
-        <input type="checkbox" value="sweater" onChange={this.handleSelection}/>sweater
-        <hr></hr>
-        <input type="checkbox" value="sweater" onChange={this.handleSelection}/>sweater
-        <hr></hr>
-        <input type="checkbox" value="turtle neck" onChange={this.handleSelection}/>turtle neck
-        <hr></hr>
-        <input type="checkbox" value="tank top" onChange={this.handleSelection}/>tank top
-        <hr></hr>
-        <input type="checkbox" value="shirt" onChange={this.handleSelection}/>shirt
-        <hr></hr>
-        <input type="checkbox" value="t-shirt" onChange={this.handleSelection}/>t-shirt
-        <hr></hr>
-        <input type="checkbox" value="sweatshirt" onChange={this.handleSelection}/>sweatshirt
-        <hr></hr>
-        <input type="checkbox" value="jacket" onChange={this.handleSelection}/>jacket
-        <hr></hr>
+        <hr/>
+        <label>blouse</label>
+        <input className="checkLine" className="checkLine" type="checkbox" value="blouse" onChange={this.handleSelection}/>
+        <hr/><label>sweater</label>
+        <input className="checkLine" type="checkbox" value="sweater" onChange={this.handleSelection}/>
+        <hr/><label>cardigan</label>
+        <input className="checkLine" type="checkbox" value="sweater" onChange={this.handleSelection}/>
+        <hr/><label>turtle neck</label>
+        <input className="checkLine" type="checkbox" value="turtle neck" onChange={this.handleSelection}/>
+        <hr/><label>tank top</label>
+        <input className="checkLine" type="checkbox" value="tank top" onChange={this.handleSelection}/>
+        <hr/><label>shirt</label>
+        <input className="checkLine" type="checkbox" value="shirt" onChange={this.handleSelection}/>
+        <hr/><label>t-shirt</label>
+        <input className="checkLine" type="checkbox" value="t-shirt" onChange={this.handleSelection}/>
+        <hr/><label>sweatshirt</label>
+        <input className="checkLine" type="checkbox" value="sweatshirt" onChange={this.handleSelection}/>
+        <hr/><label>jacket</label>
+        <input className="checkLine" type="checkbox" value="jacket" onChange={this.handleSelection}/>
+        <hr/>
         <div>BOTTOMS</div>
-        <hr></hr>
-        <input type="checkbox" value="skirt" onChange={this.handleSelection}/>skirt
-        <hr></hr>
-        <input type="checkbox" value="parnts" onChange={this.handleSelection}/>parnts
-        <hr></hr>
-        <input type="checkbox" value="jeans" onChange={this.handleSelection}/>jeans
-        <hr></hr>
-        <input type="checkbox" value="jeans" onChange={this.handleSelection}/>jeans
-        <hr></hr>
-        <input type="checkbox" value="sweatpants" onChange={this.handleSelection}/>sweatpants
-        <hr></hr>
-        <input type="checkbox" value="shorts" onChange={this.handleSelection}/>shorts
-        <hr></hr>
-        <Link to={'/viewclothes/' + this.state.filter}><button>Done</button></Link>
+        <hr/>
+        skirt
+        <input className="checkLine" type="checkbox" value="skirt" onChange={this.handleSelection}/>
+        <hr/>pants
+        <input className="checkLine" type="checkbox" value="parnts" onChange={this.handleSelection}/>
+        <hr/>jeans
+        <input className="checkLine" type="checkbox" value="jeans" onChange={this.handleSelection}/>
+        <hr/>sweatpants
+        <input className="checkLine" type="checkbox" value="sweatpants" onChange={this.handleSelection}/>
+        <hr/>shorts
+        <input className="checkLine" type="checkbox" value="shorts" onChange={this.handleSelection}/>
+        <hr/>
+        <Link to={'/viewclothes/' + this.state.filter}><Button onClick={this.wearItToday} active>Wear it today</Button></Link>
       </div>
+      </ScrollArea>
     )
   }
 })
 
-let menuStyle = {
-  textAlign: "center",
-  fontSize: 15,
-  minHeight: 400
-}
 export default TypeFilter;

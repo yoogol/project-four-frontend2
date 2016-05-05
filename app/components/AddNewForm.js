@@ -4,6 +4,7 @@ import ajaxHelpers from '../utils/ajaxHelpers';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, browserHistory, IndexRoute, withRouter } from 'react-router';
 var Dropzone = require('react-dropzone');
+require('../style/Styles.css');
 
 const AddNewForm = React.createClass ({
   getInitialState: function() {
@@ -62,7 +63,7 @@ const AddNewForm = React.createClass ({
   render: function() {
     return (
       <div>
-          <div style={bodyStyle}>
+          <div className="appbody">
             {/* <div>
              <Dropzone ref="dropzone" onDrop={this.onDrop} >
                 <div>Try dropping some files here, or click to select files to upload.</div>
@@ -71,7 +72,7 @@ const AddNewForm = React.createClass ({
                   Open Dropzone
               </button>
             </div>*/}
-            <img style={imageStyle} src={this.state.files.preview} />
+            <img className="imagePreview" src={this.state.files.preview} />
             <input placeholder='Image link' name='image' onChange={ e => this.setState({image:e.target.value})} />
             <input placeholder='Select Type' name='type' onChange={ e => this.setState({type: e.target.value})}/>
             <input placeholder='Select Color' name='color' onChange={e => this.setState({color: e.target.value})}/>
@@ -83,43 +84,5 @@ const AddNewForm = React.createClass ({
       )}
   })
 
-let imageStyle = {
-  width: "500px"
-}
-
-let headerStyle = {
-  display: "flex",
-  justifyContent: "space-around",
-  height: 50,
-  background: "indigo",
-  color: "white"
-}
-
-let bodyStyle = {
-  minHeight: 400,
-  padding: "auto",
-  margin: "auto",
-  display: "flex",
-  justifyContent: "space-around",
-  flexDirection: "column",
-  alignItems: "center"
-}
-
-let footerStyle = {
-  display: "flex",
-  justifyContent: "space-around",
-  minHeight: 30,
-  background: "indigo",
-  color: "white"
-}
-
-let appStyle = {
-  width: "70%",
-  margin: "auto"
-}
-
-let elementStyle = {
-  paddingTop: "1%"
-}
 
 export default AddNewForm;

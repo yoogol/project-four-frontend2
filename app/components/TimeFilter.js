@@ -3,6 +3,7 @@ import auth from '../utils/auth';
 import ajaxHelpers from '../utils/ajaxHelpers';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, browserHistory, IndexRoute, withRouter } from 'react-router';
+require('../style/Styles.css');
 
 const TimeFilter = React.createClass ({
   getInitialState: function() {
@@ -20,7 +21,7 @@ const TimeFilter = React.createClass ({
   },
   render: function() {
     return (
-      <div style={menuStyle}>
+      <div className="filterMenu">
         <hr></hr>
         <input type="checkbox" value="over1month" onChange={this.handleSelection}/>Over a month
         <hr></hr>
@@ -39,12 +40,5 @@ const TimeFilter = React.createClass ({
     )
   }
 })
-
-
-let menuStyle = {
-  textAlign: "center",
-  fontSize: 15,
-  minHeight: 400
-}
 
 export default TimeFilter;
