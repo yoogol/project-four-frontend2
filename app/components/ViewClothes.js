@@ -307,9 +307,8 @@ const ViewClothes = React.createClass({
       return (
         <div className="weather">
           <img className="weatherIcon" src={this.state.weatherIcon}></img>
-          <div className="weatherTemp">
-            <p>{this.state.temperature}
-              F</p>
+          <div className="weatherTemp">{this.state.temperature}
+              F
           </div>
         </div>
       )
