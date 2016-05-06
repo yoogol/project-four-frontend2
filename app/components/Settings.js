@@ -5,22 +5,26 @@ import ReactDOM from 'react-dom';
 import { Router, Route, Link, browserHistory, IndexRoute, withRouter } from 'react-router';
 require('../style/Styles.css');
 var Button = require('react-bootstrap').Button;
+var FontAwesome = require('react-fontawesome');
 
 
 const Settings = React.createClass ({
   getInitialState: function() {
     return ({
-      weatherToggle: false
+      weatherToggle: false,
+      iconToggle: "off"
     })
   },
   handleWeatherFilter: function() {
     if (this.state.weatherToggle == true) {
       this.setState ({
-        weatherToggle: false
+        weatherToggle: false,
+        iconToggle: "on"
       })
     } else {
       this.setState({
-        weatherToggle: true
+        weatherToggle: true,
+        iconToggle: "on"
       })
     }
   },
@@ -33,7 +37,7 @@ const Settings = React.createClass ({
         <Link className="linkLightBG" to={'/profile/'}>My Profile</Link>
         <hr className="menuLine"/>
         <p>Weather Filter</p>
-          <input type="checkbox" checked={this.state.weatherToggle} onChange={this.handleWeatherFilter} />
+          <i className={"fa fa-toggle-" + this.state.iconToggle} aria-hidden="true" onClick={this.handleWeatherFilter} ></i>
         <hr className="menuLine"/>
         <Link className="linkLightBG" to={'/about/'}>About This App</Link>
         <hr className="menuLine"/>

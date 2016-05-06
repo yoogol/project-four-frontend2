@@ -4,7 +4,6 @@
 }
 
 body, html {
-  overflow: hidden;
   margin: 0;
   padding: 0;
   background: silver;
@@ -18,7 +17,7 @@ Link {
 
 .app {
   width: 500px;
-  height: 595px;
+  height: 580px;
   margin: auto;
   background: white;
   position: relative;
@@ -230,7 +229,7 @@ hr {
   font-weight: bold;
   z-index: 4;
   position: relative;
-  top: 7px;
+  top: 11px;
   right: 55px;
   color: black
 }
@@ -377,10 +376,24 @@ label {
   color: grey
 }
 
+.pink {
+  color: pink
+}
+
 .weatherMessage {
-  position: relative;
+  position: absolute;
   text-align: center;
-  top: -20px;
+  top: 80px;
+  left: 35%;
+  color: lightgrey;
+  font-size: 16px
+}
+
+.waitingToLoad {
+  position: absolute;
+  text-align: center;
+  top: 90px;
+  left: 45%;
   color: lightgrey
 }
 

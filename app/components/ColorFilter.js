@@ -31,7 +31,9 @@ const ColorFilter = React.createClass ({
         <p className="menuTitle">select colors</p>
         <label className="red">red</label>
         <input className="checkLine" type="checkbox" value="red" onChange={this.handleSelection} />
-
+        <hr className="menuLine"/>
+        <label className="pink">pink</label>
+        <input className="checkLine" type="checkbox" value="pink" onChange={this.handleSelection} />
 
         <hr className="menuLine"/>
         <label className="orange">orange</label>

@@ -67,7 +67,7 @@ const Login = React.createClass ({
 
             <Link to={'/viewclothes'}>
             <Button>Enter</Button></Link>
-            <br/><br/><br/><br/>
+            <br/><br/><br/>
             <Link className="signUpLink" to={'/signup'}>Sign Up</Link>
 
           </div>
