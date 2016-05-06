@@ -441,3 +441,10 @@ a {
   text-align: center;
   text-decoration: underline;
 }
+
+.aboutText {
+  width: 80%;
+  font-size: 15px;
+  margin: auto;
+  text-align: center;
+}
