@@ -1,5 +1,4 @@
 var axios = require('axios');
-import APIkey from './APIkey';
 
 module.exports = {
   // baseUrl: 'http://localhost:3000',
